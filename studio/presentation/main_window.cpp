@@ -1,5 +1,6 @@
 #include <QFileDialog>
-#include <QDebug>
+
+#include <lethian/core/core.hpp>
 
 #include "../project/studio_project.hpp"
 
@@ -31,5 +32,13 @@ void MainWindow::OnActionOpenProjectTriggered()
 	const QString projectDir =
 		QFileDialog::getOpenFileName(this, tr("Open project"), "C://", tr("Lethian Files (*.lethian)"));
 
+	// TODO: Handle erros
 	StudioProject::Get().Load(projectDir.toStdString());
+	const auto projectInfo = StudioProject::Get().GetInfo();
+
+	auto &engineInfo = Leth::EngineContext::GetAppInfo();
+	engineInfo.majorVersion = projectInfo.versionMajor;
+	engineInfo.minorVersion = projectInfo.versionMinor;
+	engineInfo.versionPatch = projectInfo.versionPatch;
+	engineInfo.name = Leth::String(projectInfo.name.c_str());
 }

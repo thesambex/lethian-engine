@@ -55,4 +55,8 @@ void StudioProject::Load(const std::string &dir)
 			}
 		}
 	}
+
+	std::filesystem::path path(dir);
+
+	m_ProjectRoot = path.parent_path();
 }

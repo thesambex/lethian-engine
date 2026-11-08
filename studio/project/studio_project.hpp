@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <filesystem>
 
 class StudioProject
 {
@@ -30,9 +31,16 @@ public:
 		return m_Info;
 	}
 
+	const std::filesystem::path &GetProjectRoot()
+	{
+		return m_ProjectRoot;
+	}
+
 	std::string Create(const Info &info);
 	void Load(const std::string &dir);
 
 private:
+	std::filesystem::path m_ProjectRoot;
+
 	Info m_Info;
 };

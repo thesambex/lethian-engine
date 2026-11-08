@@ -17,8 +17,10 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 
 set(VENDOR_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendor")
+set(ENGINE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/engine")
 
 option(ENABLE_DLL "Enable Dll Build" ON)
 
 add_subdirectory(studio)
 add_subdirectory(vendor)
+add_subdirectory(engine)

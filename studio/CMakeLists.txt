@@ -34,9 +34,15 @@ target_link_libraries(lethian-studio
     PRIVATE
     Qt::Core
     Qt::Widgets
+	leth-core
 )
 
-target_include_directories(lethian-studio PRIVATE "${VENDOR_DIR}/toml")
+target_include_directories(
+	lethian-studio
+	PRIVATE
+	"${VENDOR_DIR}/toml"
+	"${ENGINE_DIR}"
+)
 
 install(TARGETS lethian-studio
     BUNDLE  DESTINATION .
