@@ -26,6 +26,10 @@ source_group("Presentation" FILES ${SRC_PRESENTATION})
 
 qt_add_executable(lethian-studio WIN32
     main.cpp
+	studio_application.hpp
+	studio_application.cpp
+	studio_engine.hpp
+	studio_engine.cpp
 	${SRC_PRESENTATION}
 	${SRC_PROJECT}
 )
@@ -35,6 +39,7 @@ target_link_libraries(lethian-studio
     Qt::Core
     Qt::Widgets
 	leth-core
+	leth-framework
 )
 
 target_include_directories(

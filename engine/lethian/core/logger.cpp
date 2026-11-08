@@ -17,7 +17,7 @@ namespace Leth
 	{
 		std::vector<spdlog::sink_ptr> logSinks;
 		logSinks.emplace_back(std::make_shared<spdlog::sinks::stdout_color_sink_mt>());
-		logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("leth.log", true));
+		//logSinks.emplace_back(std::make_shared<spdlog::sinks::basic_file_sink_mt>("leth.log", true));
 
 #ifdef _MSC_VER
 		logSinks.emplace_back(std::make_shared<spdlog::sinks::msvc_sink_mt>());

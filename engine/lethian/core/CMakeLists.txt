@@ -6,12 +6,12 @@ FetchContent_Declare(
 	GIT_TAG v1.17.0
 )
 
-FetchContent_MakeAvailable(spdlog)
-
 set(SRC_CONTAINERS
 	containers/string.hpp
 	containers/string.cpp
 )
+
+FetchContent_MakeAvailable(spdlog)
 
 source_group("Containers" FILES ${SRC_CONTAINERS})
 
@@ -39,3 +39,5 @@ if (ENABLE_DLL)
 endif ()
 
 target_link_libraries(leth-core PRIVATE spdlog::spdlog)
+
+target_include_directories(leth-core PUBLIC ${spdlog_SOURCE_DIR}/include)

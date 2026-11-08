@@ -1,10 +1,9 @@
-#include <QApplication>
-
+#include "studio_application.hpp"
 #include "presentation/main_window.hpp"
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
-	QApplication app(argc, argv);
+	StudioApplication app(argc, argv);
 
 	MainWindow w;
 	w.showMaximized();
