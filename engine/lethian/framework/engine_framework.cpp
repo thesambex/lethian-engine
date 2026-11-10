@@ -8,10 +8,15 @@ namespace Leth
 	{
 	}
 
-	bool EngineFramework::Create()
+	bool EngineFramework::Initialize()
 	{
 		Logger::Initialize();
 
+		return Create();
+	}
+
+	bool EngineFramework::Create()
+	{
 		Start();
 
 		return true;

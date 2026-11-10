@@ -24,6 +24,13 @@ set(SRC_PRESENTATION
 
 source_group("Presentation" FILES ${SRC_PRESENTATION})
 
+set(SRC_WIDGETS
+	widgets/file_list_widget.hpp
+	widgets/file_list_widget.cpp
+)
+
+source_group("Widgets" FILES ${SRC_WIDGETS})
+
 qt_add_executable(lethian-studio WIN32
     main.cpp
 	studio_application.hpp
@@ -32,6 +39,7 @@ qt_add_executable(lethian-studio WIN32
 	studio_engine.cpp
 	${SRC_PRESENTATION}
 	${SRC_PROJECT}
+	${SRC_WIDGETS}
 )
 
 target_link_libraries(lethian-studio

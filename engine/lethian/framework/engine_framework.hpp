@@ -11,12 +11,13 @@ namespace Leth
 	public:
 		virtual ~EngineFramework() = 0;
 
+		bool Initialize();
 		bool Create();
+		int Shutdown();
+
 		void Run();
 		void Stop();
-
 		void Start();
-		int Shutdown();
 
 	protected:
 		virtual void OnStart() = 0;
