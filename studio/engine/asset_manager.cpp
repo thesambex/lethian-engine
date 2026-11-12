@@ -3,6 +3,7 @@
 #include <QFile>
 
 #include <lethian/engine/resources/asset.hpp>
+#include <lethian/core/uuid.hpp>
 
 #include "asset_manager.hpp"
 
@@ -47,6 +48,7 @@ int AssetManager::FileToAsset(const QString &sourcePath, const QString &targetPa
 
 	// Write asset
 	const Leth::CAsset::Header assetHeader{
+		.id = Leth::UUID::V4().Get(),
 		.version = 1,
 		.dataSize = static_cast<std::uint64_t>(fileData.size()),
 		.type = assetType,

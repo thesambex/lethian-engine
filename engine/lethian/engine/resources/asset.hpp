@@ -18,10 +18,10 @@ namespace Leth
 			Shader
 		};
 
-		// TODO: Create asset ID
 		// TODO: Create asset specific type header
 		struct Header
 		{
+			std::uint64_t id;
 			std::uint32_t version;
 			std::uint64_t dataSize;
 			AssetType type;
@@ -39,6 +39,6 @@ namespace Leth
 	private:
 		Header m_Header;
 
-		std::vector<std::byte> m_Data;
+		std::span<std::byte> m_Data;
 	};
 } // namespace Leth

@@ -6,16 +6,16 @@ FetchContent_Declare(
 	GIT_TAG v1.17.0
 )
 
-set(SRC_CONTAINERS
+set(CONTAINERS_SRC
 	containers/string.hpp
 	containers/string.cpp
 )
 
 FetchContent_MakeAvailable(spdlog)
 
-source_group("Containers" FILES ${SRC_CONTAINERS})
+source_group("Core/Containers" FILES ${CONTAINERS_SRC})
 
-set(SRC_CORE
+set(CORE_SRC
 	core_api.hpp
 	core.hpp
 	defines.hpp
@@ -23,12 +23,16 @@ set(SRC_CORE
 	engine_context.cpp
 	logger.hpp
 	logger.cpp
+	uuid.hpp
+	uuid.cpp
 )
 
+source_group("Core" FILES ${CORE_SRC})
+
 if (ENABLE_DLL)
-    add_library(leth-core SHARED ${SRC_CORE} ${SRC_CONTAINERS})
+    add_library(leth-core SHARED ${CORE_SRC} ${CONTAINERS_SRC})
 else ()
-    add_library(leth-core STATIC ${SRC_CORE} ${SRC_CONTAINERS})
+    add_library(leth-core STATIC ${CORE_SRC} ${CONTAINERS_SRC})
 endif ()
 
 if (ENABLE_DLL)
