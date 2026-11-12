@@ -1,13 +1,16 @@
 #include <QFileDialog>
+#include <QMessageBox>
 #include <QTreeView>
 #include <QFileSystemModel>
 #include <QFileInfo>
 #include <QFile>
 
 #include <lethian/core/core.hpp>
+#include <lethian/engine/resources/asset.hpp>
 
 #include "../widgets/file_list_widget.hpp"
 #include "../project/studio_project.hpp"
+#include "../engine/asset_manager.hpp"
 #include "../studio_application.hpp"
 
 #include "new_project_dialog.hpp"
@@ -67,8 +70,34 @@ void MainWindow::OnFileDrop(const QString &sourcePath, const QString &targetDire
 	if (QFileInfo::exists(targetPath))
 		return;
 
-	if (QFile::copy(sourcePath, targetPath))
-		m_FileListWidget->Refresh();
+	if (const int result = AssetManager::FileToAsset(sourcePath, targetPath); result != 0)
+	{
+		switch (result)
+		{
+		case -1:
+			QMessageBox::warning(this, tr("Asset manager"), tr("Failed to create asset"));
+			break;
+
+		case 2:
+			QMessageBox::warning(this, tr("Asset manager"), tr("Failed to open file"));
+			break;
+
+		case 3:
+			QMessageBox::warning(this, tr("Asset manager"), tr("File is empty"));
+			break;
+
+		case 1:
+			QMessageBox::warning(this, tr("Asset manager"), tr("File not supported"));
+			break;
+
+		default:
+			break;
+		}
+
+		return;
+	}
+
+	m_FileListWidget->Refresh();
 }
 
 void MainWindow::OnActionOpenProjectTriggered()

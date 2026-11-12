@@ -4,33 +4,33 @@
 
 namespace Leth
 {
-	EngineFramework::~EngineFramework()
+	CEngineFramework::~CEngineFramework()
 	{
 	}
 
-	bool EngineFramework::Initialize()
+	bool CEngineFramework::Initialize()
 	{
 		Logger::Initialize();
 
 		return Create();
 	}
 
-	bool EngineFramework::Create()
+	bool CEngineFramework::Create()
 	{
 		Start();
 
 		return true;
 	}
 
-	void EngineFramework::Run()
+	void CEngineFramework::Run()
 	{
 	}
 
-	void EngineFramework::Stop()
+	void CEngineFramework::Stop()
 	{
 	}
 
-	void EngineFramework::Start()
+	void CEngineFramework::Start()
 	{
 		LETH_CORE_INFO("Engine start initialization.");
 
@@ -39,7 +39,7 @@ namespace Leth
 		LETH_CORE_INFO("Engine finished initialization.");
 	}
 
-	int EngineFramework::Shutdown()
+	int CEngineFramework::Shutdown()
 	{
 		LETH_CORE_INFO("Engine start shut down.");
 
