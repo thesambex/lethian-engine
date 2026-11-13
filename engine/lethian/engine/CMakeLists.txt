@@ -2,12 +2,14 @@ set(ENGINE_SRC
 	engine_api.hpp
 )
 
+source_group("Engine" FILES ${ENGINE_SRC})
+
 set(RESOURCES_SRC
 	resources/asset.hpp
 	resources/asset.cpp
 )
 
-source_group("Resources" FILES ${RESOURCES_SRC})
+source_group("Engine/Resources" FILES ${RESOURCES_SRC})
 
 if (ENABLE_DLL)
     add_library(leth-engine
@@ -38,4 +40,5 @@ target_include_directories(leth-engine
 target_link_libraries(leth-engine
     PRIVATE
     leth-core
+	leth-platform
 )
