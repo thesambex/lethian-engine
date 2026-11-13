@@ -11,7 +11,7 @@ set(PROJECT_SRC
 	project/studio_project.cpp
 )
 
-source_group("Project" FILES ${PROJECT_SRC})
+source_group("Studio/Project" FILES ${PROJECT_SRC})
 
 set(PRESENTATION_SRC
 	presentation/main_window.ui
@@ -22,28 +22,34 @@ set(PRESENTATION_SRC
 	presentation/new_project_dialog.cpp
 )
 
-source_group("Presentation" FILES ${PRESENTATION_SRC})
+source_group("Studio/Presentation" FILES ${PRESENTATION_SRC})
 
 set(WIDGETS_SRC
 	widgets/file_list_widget.hpp
 	widgets/file_list_widget.cpp
 )
 
-source_group("Widgets" FILES ${WIDGETS_SRC})
+source_group("Studio/Widgets" FILES ${WIDGETS_SRC})
 
 set(ENGINE_SRC
 	engine/asset_manager.hpp
 	engine/asset_manager.cpp
 )
 
-source_group("Engine" FILES ${ENGINE_SRC})
+source_group("Studio/Engine" FILES ${ENGINE_SRC})
 
-qt_add_executable(lethian-studio WIN32
-    main.cpp
+set(STUDIO_SRC
+	main.cpp
 	studio_application.hpp
 	studio_application.cpp
 	studio_engine.hpp
 	studio_engine.cpp
+)
+
+source_group("Studio" FILES ${STUDIO_SRC})
+
+qt_add_executable(lethian-studio WIN32
+	${STUDIO_SRC}
 	${PRESENTATION_SRC}
 	${PROJECT_SRC}
 	${WIDGETS_SRC}
@@ -57,6 +63,7 @@ target_link_libraries(lethian-studio
 	leth-core
 	leth-framework
 	leth-engine
+	leth-platform
 )
 
 target_include_directories(
