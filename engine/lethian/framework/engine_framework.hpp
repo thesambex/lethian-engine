@@ -6,10 +6,10 @@
 
 namespace Leth
 {
-	class LETH_FRAMEWORK_API EngineFramework
+	class LETH_FRAMEWORK_API CEngineFramework
 	{
 	public:
-		virtual ~EngineFramework() = 0;
+		virtual ~CEngineFramework() = 0;
 
 		bool Initialize();
 		bool Create();

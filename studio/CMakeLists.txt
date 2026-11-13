@@ -6,14 +6,14 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-set(SRC_PROJECT
+set(PROJECT_SRC
 	project/studio_project.hpp
 	project/studio_project.cpp
 )
 
-source_group("Project" FILES ${SRC_PROJECT})
+source_group("Studio/Project" FILES ${PROJECT_SRC})
 
-set(SRC_PRESENTATION
+set(PRESENTATION_SRC
 	presentation/main_window.ui
 	presentation/main_window.hpp
 	presentation/main_window.cpp
@@ -22,24 +22,38 @@ set(SRC_PRESENTATION
 	presentation/new_project_dialog.cpp
 )
 
-source_group("Presentation" FILES ${SRC_PRESENTATION})
+source_group("Studio/Presentation" FILES ${PRESENTATION_SRC})
 
-set(SRC_WIDGETS
+set(WIDGETS_SRC
 	widgets/file_list_widget.hpp
 	widgets/file_list_widget.cpp
 )
 
-source_group("Widgets" FILES ${SRC_WIDGETS})
+source_group("Studio/Widgets" FILES ${WIDGETS_SRC})
 
-qt_add_executable(lethian-studio WIN32
-    main.cpp
+set(ENGINE_SRC
+	engine/asset_manager.hpp
+	engine/asset_manager.cpp
+)
+
+source_group("Studio/Engine" FILES ${ENGINE_SRC})
+
+set(STUDIO_SRC
+	main.cpp
 	studio_application.hpp
 	studio_application.cpp
 	studio_engine.hpp
 	studio_engine.cpp
-	${SRC_PRESENTATION}
-	${SRC_PROJECT}
-	${SRC_WIDGETS}
+)
+
+source_group("Studio" FILES ${STUDIO_SRC})
+
+qt_add_executable(lethian-studio WIN32
+	${STUDIO_SRC}
+	${PRESENTATION_SRC}
+	${PROJECT_SRC}
+	${WIDGETS_SRC}
+	${ENGINE_SRC}
 )
 
 target_link_libraries(lethian-studio
@@ -48,6 +62,8 @@ target_link_libraries(lethian-studio
     Qt::Widgets
 	leth-core
 	leth-framework
+	leth-engine
+	leth-platform
 )
 
 target_include_directories(
