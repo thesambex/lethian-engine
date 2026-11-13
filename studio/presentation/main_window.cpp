@@ -5,8 +5,9 @@
 #include <QFileInfo>
 #include <QFile>
 
+#include <utility>
+
 #include <lethian/core/core.hpp>
-#include <lethian/engine/resources/asset.hpp>
 
 #include "../widgets/file_list_widget.hpp"
 #include "../project/studio_project.hpp"

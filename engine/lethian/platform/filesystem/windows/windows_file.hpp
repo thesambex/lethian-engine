@@ -11,7 +11,7 @@ namespace Leth
 	{
 	public:
 		explicit WinFile(const std::filesystem::path &path);
-		~WinFile() = default;
+		~WinFile() override;
 
 		bool Open();
 		void Close();

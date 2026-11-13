@@ -16,6 +16,8 @@ namespace Leth
 	class LETH_CORE_API EngineContext
 	{
 	public:
+		// TODO: Adjust singleton
+
 		static ApplicationInfo &GetAppInfo();
 	};
 
