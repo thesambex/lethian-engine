@@ -5,6 +5,8 @@ set(
     engine_framework.cpp
 )
 
+source_group("Framework" FILES ${FRAMEWORK_SRC})
+
 if (ENABLE_DLL)
     add_library(leth-framework SHARED ${FRAMEWORK_SRC})
 else ()
@@ -26,5 +28,6 @@ target_include_directories(leth-framework
 target_link_libraries(leth-framework
     PRIVATE
     leth-core
+	leth-platform
 )
 

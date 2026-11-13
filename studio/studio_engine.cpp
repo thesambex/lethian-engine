@@ -9,3 +9,8 @@ void StudioEngine::OnShutdown()
 {
 
 }
+
+void StudioEngine::OnUpdate()
+{
+
+}

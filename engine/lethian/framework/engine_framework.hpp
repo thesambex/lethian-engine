@@ -6,22 +6,30 @@
 
 namespace Leth
 {
-	class LETH_FRAMEWORK_API CEngineFramework
+	class LETH_FRAMEWORK_API AEngineFramework
 	{
 	public:
-		virtual ~CEngineFramework() = 0;
+		AEngineFramework();
+		virtual ~AEngineFramework() = 0;
 
 		bool Initialize();
 		bool Create();
 		int Shutdown();
 
+		void DoUpdate();
+		void Update();
 		void Run();
 		void Stop();
+		void Resume();
 		void Start();
 
 	protected:
 		virtual void OnStart() = 0;
 		virtual void OnShutdown() = 0;
+		virtual void OnUpdate() = 0;
+
+	protected:
+		class ADisplay *display = nullptr;
 
 	private:
 		bool m_IsRunning = false;
