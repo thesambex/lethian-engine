@@ -7,6 +7,11 @@ source_group("Platform" FILES ${PLATFORM_SRC})
 
 set(FS_SRC
 	filesystem/file.hpp
+	filesystem/filesystem.hpp
+	filesystem/physical_filesystem.hpp
+	filesystem/physical_filesystem.cpp
+	filesystem/vsf.hpp
+	filesystem/vsf.cpp
 )
 
 source_group("Platform/Filesystem" FILES ${FS_SRC})

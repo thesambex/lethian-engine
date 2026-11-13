@@ -8,6 +8,11 @@ namespace Leth
 	{
 	}
 
+	WinFile::~WinFile()
+	{
+		Close();
+	}
+
 	bool WinFile::Open()
 	{
 		m_Handle = CreateFileW(m_Path.wstring().c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
